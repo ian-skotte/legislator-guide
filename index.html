@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>2027 Legislator Benefits Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
 <style>
 /* Layout: sticky search + category rail over one long document of titled blocks; every block prints. */
 :root{
   --bg:#f3f5fa; --surface:#ffffff; --fg:#18233f; --muted:#59647f; --line:#d8deeb;
   --brand:#1d3a6e; --on-brand:#ffffff; --tint:#e9eef8; --red:#c01f2f; --mark:#ffe58a; --mark-fg:#18233f;
   --note-bg:#fff4f4; --th-bg:#1d3a6e; --th-fg:#ffffff; --row-alt:#f6f8fc;
-  --display:"Arial Narrow","Segoe UI",Arial,sans-serif;
-  --body:"Segoe UI",Helvetica,Arial,sans-serif;
+  --display:"Barlow Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Sans 3","Segoe UI",Helvetica,Arial,sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
@@ -24,11 +24,9 @@
   --note-bg:#2b1a24; --th-bg:#243764; --th-fg:#eef3ff; --row-alt:#192342; color-scheme:dark;}
 
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--fg);font:16px/1.55 var(--body);margin:0}
 .wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:0 64px}
-.skip-link{position:absolute;left:8px;top:8px;z-index:10;padding:8px 12px;background:var(--brand);color:var(--on-brand);border-radius:6px;transform:translateY(-200%);transition:transform .15s}
-.skip-link:focus{transform:translateY(0)}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
 a{color:var(--brand)}
 p{margin:0 0 .7em}
@@ -53,6 +51,7 @@ li{margin-bottom:.25em}
 .search{flex:1 1 280px;min-width:0;position:relative}
 .search input{width:100%;font:inherit;color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:11px 40px 11px 14px}
 .search input:focus-visible,.chip:focus-visible,.btn:focus-visible,.clear:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.search input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
 .search .clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--muted);font-size:1.3rem;cursor:pointer;padding:4px 9px;line-height:1}
 .btn{font:700 .95rem var(--body);background:var(--brand);color:var(--on-brand);border:0;border-radius:8px;padding:11px 16px;cursor:pointer}
 .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
@@ -99,6 +98,12 @@ tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
 
 mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px}
 .off{display:none}
+tr.rowoff{display:none}
+.tw.collapsed{display:none}
+.tbar{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:.88rem;color:var(--muted);margin:-4px 0 12px}
+.tbar button{font:600 .88rem var(--body);color:var(--brand);background:none;border:1.5px solid var(--line);border-radius:6px;padding:4px 10px;cursor:pointer}
+.tbar button:focus-visible,a:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.blk a{overflow-wrap:anywhere}
 .empty{text-align:center;padding:48px 16px;color:var(--muted)}
 .empty .btn{margin-top:12px}
 .foot{margin-top:40px;font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
@@ -117,6 +122,9 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
   .wrap{max-width:none;padding:0}
   .toolbar,.status,.foot .noprint,.empty{display:none!important}
   .off{display:block!important}
+  tr.rowoff{display:table-row!important}
+  .tw.collapsed{display:block!important}
+  .tbar{display:none!important}
   mark{background:none;color:inherit}
   .mast{padding-block:0 10px}
   .mast h1{font-size:30pt}
@@ -135,10 +143,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
   a{color:inherit;text-decoration:none}
 }
 </style>
-</head>
 
-<body>
-<a class="skip-link" href="#doc">Skip to main content</a>
 <div class="wrap" id="top">
   <header class="mast">
     <div class="eyebrow">Partners for Health &middot; State of Tennessee</div>
@@ -156,8 +161,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
   <div class="toolbar" id="toolbar">
     <div class="searchrow">
       <div class="search">
-        <label class="sr-only" for="q">Search the benefits packet</label>
-        <input id="q" type="search" placeholder="Search the packet: deductible, spouse, dental, HSA…" autocomplete="off">
+        <input id="q" type="search" placeholder="Search the packet: deductible, spouse, dental, HSA…" aria-label="Search the benefits packet" autocomplete="off">
         <button class="clear" id="clr" type="button" aria-label="Clear search" hidden>&times;</button>
       </div>
       <button class="btn" id="printBtn" type="button" hidden>Print full packet</button>
@@ -183,10 +187,15 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
     </article>
     <article class="blk">
       <h3>Where and how to enroll</h3>
-      <p>Enroll online through <b>Employee Self-Service in Edison</b>. The packet links to the Edison login, first-time login instructions, and instructions for enrolling through Employee Self-Service.</p>
+      <p>Enroll online through <b>Employee Self-Service in Edison</b>.</p>
+      <ul>
+        <li><a href="https://hub.edison.tn.gov/psp/paprd/EMPLOYEE/EMPL/h/?tab=PAPP_GUEST" target="_blank" rel="noopener">Log in to Edison</a></li>
+        <li><a href="https://www.youtube.com/watch?v=Ga3tNXtFmJA" target="_blank" rel="noopener">Instructions for logging in to Edison for the first time</a> (video)</li>
+        <li><a href="https://www.tn.gov/partnersforhealth/ae/2026-annual-enrollment/how-to-enroll-in-your-benefits.html" target="_blank" rel="noopener">Instructions for enrolling through Employee Self-Service</a></li>
+      </ul>
       <h4>Who to contact</h4>
       <div class="contact">
-        <div><b>Legislative Agency Benefits Coordinator</b>Breanna Delabre<br>Contact your Legislative Agency Benefits Coordinator for enrollment assistance.</div>
+        <div><b>Legislative Agency Benefits Coordinator</b>Breanna Delabre<br>Phone and email: see your printed packet (the source file shows placeholder contact details)</div>
         <div><b>Benefits Service Center</b><span class="tn"><a href="tel:+18002539981">800-253-9981</a> or <a href="tel:+16157413590">615-741-3590</a></span><br><a href="mailto:Benefits.Administration@tn.gov">Benefits.Administration@tn.gov</a><br>Monday to Friday, 8 a.m. to 4:30 p.m. CT</div>
       </div>
     </article>
@@ -198,9 +207,9 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
     <article class="blk">
       <h3>Four steps for health insurance</h3>
       <ol class="steps">
-        <li><b>1. Choose your plan</b>Premier PPO<br>Standard PPO<br>CDHP/HSA (consumer-driven health plan with a health savings account). State/Higher Ed ONLY: Local CDHP/HSA is for Local Education/Local Government.<br>Limited PPO: Local Education/Local Government ONLY<br>Copay PPO: Local Education/Local Government ONLY</li>
+        <li><b>1. Choose your plan</b>Premier PPO<br>Standard PPO<br>CDHP/HSA (consumer-driven health plan with a health savings account). State/Higher Ed ONLY: Local CDHP/HSA is for Local Education/Local Government.<br>Limited PPO: Local Education/Local Government ONLY<br>Copay PPO: Local Education/Local Government ONLY<br><span class="fine"><a href="https://www.tn.gov/partnersforhealth/insurance-premiums.html" target="_blank" rel="noopener">Review premiums for all plans</a> &middot; <a href="https://www.tn.gov/partnersforhealth/insurance-premiums/insurance-comparison-charts.html" target="_blank" rel="noopener">Insurance comparison charts</a></span></li>
         <li><b>2. Choose your carrier</b>BlueCross BlueShield of Tennessee (BCBST)<br>Cigna<br><span class="fine">The Copay PPO for Local Education/Local Government uses only BCBST Network S.</span></li>
-        <li><b>3. Choose your network</b>BCBST Network S<br>BCBST Network P (higher cost)<br>Cigna LocalPlus<br>Cigna Open Access Plus (higher cost)<br><span class="fine">Learn more: <a href="https://www.tn.gov/partnersforhealth/health-options/carrier-network">tn.gov/partnersforhealth/health-options/carrier-network</a></span></li>
+        <li><b>3. Choose your network</b>BCBST Network S<br>BCBST Network P (higher cost)<br>Cigna LocalPlus<br>Cigna Open Access Plus (higher cost)<br><span class="fine">Learn more: <a href="https://www.tn.gov/partnersforhealth/health-options/carrier-network" target="_blank" rel="noopener">tn.gov/partnersforhealth/health-options/carrier-network</a></span></li>
         <li><b>4. Choose your tier</b>Employee only<br>Employee + spouse<br>Employee + child(ren)<br>Employee + spouse + child(ren)</li>
       </ol>
       <p class="muted">Enrollment is done in Edison Employee Self Service.</p>
@@ -235,15 +244,15 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
           <tr class="grp"><th colspan="7">Preventive care office visits (as recommended and medically necessary)</th></tr>
           <tr><th>Well-baby and well-child visits; annual adult physical and well-woman exams; routine prenatal and postnatal services; immunizations; annual hearing and non-refractive vision screening; screenings, labs, nutritional guidance and tobacco cessation counseling</th><td class="c">$0</td><td class="c">$45</td><td class="c">$0</td><td class="c">$50</td><td class="c">$0</td><td class="c">40%</td></tr>
           <tr class="grp"><th colspan="7">Outpatient services (services subject to coinsurance may be extra)</th></tr>
-          <tr><th>Primary care office visit: family practice, general practice, internal medicine, OB/GYN, pediatrics; nurse practitioners, physician assistants and nurse midwives (licensed health care facility only); initial maternity visit; surgery in office setting; provider-based telehealth; allergy injections and serum</th><td class="c">$25</td><td class="c">$45</td><td class="c">$30</td><td class="c">$50</td><td class="c">20%</td><td class="c">40%</td></tr>
-          <tr><th>Specialist office visit (same included services as primary care)</th><td class="c">$45</td><td class="c">$70</td><td class="c">$50</td><td class="c">$75</td><td class="c">20%</td><td class="c">40%</td></tr>
-          <tr><th>Behavioral health and substance use, including provider-based virtual visits</th><td class="c">$25</td><td class="c">$45</td><td class="c">$30</td><td class="c">$50</td><td class="c">20%</td><td class="c">40%</td></tr>
+          <tr><th>Primary care office visit [8]: family practice, general practice, internal medicine, OB/GYN, pediatrics; nurse practitioners, physician assistants and nurse midwives (licensed health care facility only); initial maternity visit; surgery in office setting; provider-based telehealth; allergy injections and serum</th><td class="c">$25</td><td class="c">$45</td><td class="c">$30</td><td class="c">$50</td><td class="c">20%</td><td class="c">40%</td></tr>
+          <tr><th>Specialist office visit [8]: nurse practitioners, physician assistants and nurse midwives (licensed health care facility only); surgery in office setting; provider-based telehealth; allergy injections and serum</th><td class="c">$45</td><td class="c">$70</td><td class="c">$50</td><td class="c">$75</td><td class="c">20%</td><td class="c">40%</td></tr>
+          <tr><th>Behavioral health and substance use [2][8], including provider-based virtual visits</th><td class="c">$25</td><td class="c">$45</td><td class="c">$30</td><td class="c">$50</td><td class="c">20%</td><td class="c">40%</td></tr>
           <tr><th>Telehealth programs (MDLive, Teladoc, Talkspace)</th><td class="c">$15</td><td class="c">N/A</td><td class="c">$15</td><td class="c">N/A</td><td class="c">20%</td><td class="c">N/A</td></tr>
           <tr><th>Chiropractic and acupuncture (annual limit of 50 visits each)</th><td class="c">$25/visit for 1-20<br>$45/visit for 21-50</td><td class="c">$45/visit for 1-20<br>$70/visit for 21-50</td><td class="c">$30/visit for 1-20<br>$50/visit for 21-50</td><td class="c">$50/visit for 1-20<br>$75/visit for 21-50</td><td class="c">20%</td><td class="c">40%</td></tr>
           <tr><th>Convenience clinic</th><td class="c">$25</td><td class="c">$45</td><td class="c">$30</td><td class="c">$50</td><td class="c">20%</td><td class="c">40%</td></tr>
           <tr><th>Urgent care facility</th><td class="c">$45</td><td class="c">$70</td><td class="c">$50</td><td class="c">$75</td><td class="c">20%</td><td class="c">40%</td></tr>
           <tr class="grp"><th colspan="7">Pharmacy: generic / preferred / non-preferred</th></tr>
-          <tr><th>30-day supply</th><td class="c" colspan="2">$7 / $40 / $90 copay + amount over MAC</td><td class="c" colspan="2">$14 / $50 / $100 copay + amount over MAC</td><td class="c">20%</td><td class="c">40% + amount over MAC</td></tr>
+          <tr><th>30-day supply</th><td class="c">$7 / $40 / $90</td><td class="c">Copay + amount over MAC</td><td class="c">$14 / $50 / $100</td><td class="c">Copay + amount over MAC</td><td class="c">20%</td><td class="c">40% + amount over MAC</td></tr>
           <tr><th>90-day supply, 90-day pharmacy or mail order</th><td class="c">$14 / $80 / $180</td><td class="c">N/A (no network)</td><td class="c">$28 / $100 / $200</td><td class="c">N/A (no network)</td><td class="c">20%</td><td class="c">N/A (no network)</td></tr>
           <tr><th>90-day supply, certain maintenance medications, 90-day pharmacy or mail order [3]</th><td class="c">$7 / $40 / $160</td><td class="c">N/A (no network)</td><td class="c">$14 / $50 / $180</td><td class="c">N/A (no network)</td><td class="c">10% before deductible</td><td class="c">N/A (no network)</td></tr>
           <tr><th>30-day supply, medications prescribed for obesity</th><td class="c">25%</td><td class="c">N/A (no network)</td><td class="c">25%</td><td class="c">N/A (no network)</td><td class="c">25%</td><td class="c">N/A (no network)</td></tr>
@@ -253,7 +262,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
     </article>
 
     <article class="blk">
-      <h3>2027 plan comparison: facilities, deductibles and out-of-pocket maximums</h3>
+      <h3>2027 plan comparison: facilities and other services</h3>
       <p class="muted">PPO services in this table ARE subject to a deductible unless noted with [5]. CDHP/HSA services are subject to a deductible and coinsurance, except in-network preventive care.</p>
       <div class="tw wide"><table>
         <thead><tr><th rowspan="2">Covered services</th><th class="c" colspan="2">Premier PPO</th><th class="c" colspan="2">Standard PPO</th><th class="c" colspan="2">CDHP/HSA</th></tr>
@@ -272,6 +281,10 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
           <tr><th>Durable medical equipment, external prosthetics and medical supplies [4]</th><td class="c">15%</td><td class="c">40%</td><td class="c">20%</td><td class="c">40%</td><td class="c">20%</td><td class="c">40%</td></tr>
         </tbody></table></div>
       <p class="fine">Also covered: limited dental benefits, hospice care and out-of-country charges. See the Member Handbook for coverage details.</p>
+    </article>
+
+    <article class="blk">
+      <h3>2027 deductibles, out-of-pocket maximums and HSA contribution</h3>
 
       <h4>Deductible (only eligible expenses count)</h4>
       <div class="tw wide"><table>
@@ -314,10 +327,10 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
       <ul class="fine">
         <li>[1] Subject to maximum allowable charge (MAC), the most a plan will pay for a covered service or medication. For non-emergent care from an out-of-network provider or pharmacy that charges more than the MAC, you pay the copay or coinsurance plus the difference between the MAC and the actual charge, unless state or federal law says otherwise.</li>
         <li>[2] Residential treatment, partial hospitalization/day treatment and intensive outpatient therapy are treated as "inpatient" for cost-sharing. Prior authorization is required for certain outpatient behavioral health services, including applied behavioral analysis, transcranial magnetic stimulation and psychological testing.</li>
-          <li>[3] More on the maintenance drug benefit and participating Retail-90 pharmacies: <a href="https://www.tn.gov/partnersforhealth/health-options/pharmacy.html">tn.gov/partnersforhealth/health-options/pharmacy.html</a>.</li>
+        <li>[3] More on the maintenance drug benefit and participating Retail-90 pharmacies: <a href="https://www.tn.gov/partnersforhealth/health-options/pharmacy.html" target="_blank" rel="noopener">tn.gov/partnersforhealth/health-options/pharmacy.html</a>.</li>
         <li>[4] Prior authorization required for non-emergent services. Out-of-network benefits for non-emergent medically necessary services are reduced by half if required prior authorization is not obtained, subject to the MAC. If services are not medically necessary, no benefits are provided.</li>
         <li>[5] For PPO plans, the deductible does not apply to in-network outpatient PT/ST/OT/ABA and other PPO services as noted.</li>
-          <li>[6] Enhanced benefit for select preferred substance use treatment facilities: PPO members pay no deductible or coinsurance for facility-based treatment; CDHP members must meet their deductible first, then coinsurance is waived. Copays (PPO) and deductible/coinsurance (CDHP) apply for standard outpatient treatment. Call <a href="tel:+18554373486">855-Here4TN</a> for help.</li>
+        <li>[6] Enhanced benefit for select preferred substance use treatment facilities: PPO members pay no deductible or coinsurance for facility-based treatment; CDHP members must meet their deductible first, then coinsurance is waived. Copays (PPO) and deductible/coinsurance (CDHP) apply for standard outpatient treatment. Call <a href="tel:+18554373486">855-Here4TN</a> for help.</li>
         <li>[7] In-network benefits apply to certain out-of-network professional services at certain in-network facilities.</li>
         <li>[8] Member cost share for medications administered by a provider is set by the place of service (provider office, infusion center, inpatient or home).</li>
       </ul>
@@ -326,41 +339,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
     <article class="blk">
       <h3>2027 monthly health premiums: Active employees (State and Higher Education)</h3>
       <p class="muted">All networks, plans and tiers. The "Employer share" column is the state's monthly contribution for that tier.</p>
-      <div id="premiums">
-        <h4>Premier PPO</h4>
-        <div class="tw wide"><table>
-          <caption class="sr-only">2027 monthly premiums for Premier PPO</caption>
-          <thead><tr><th scope="col">Tier</th><th scope="col" class="c">BCBST Network S</th><th scope="col" class="c">Cigna LocalPlus</th><th scope="col" class="c">BCBST Network P</th><th scope="col" class="c">Cigna Open Access</th><th scope="col" class="c">Employer share</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Employee only</th><td class="c">$189</td><td class="c">$189</td><td class="c">$289</td><td class="c">$289</td><td class="c">$755</td></tr>
-            <tr><th scope="row">Employee + child(ren)</th><td class="c">$283</td><td class="c">$283</td><td class="c">$393</td><td class="c">$393</td><td class="c">$1,133</td></tr>
-            <tr><th scope="row">Employee + spouse</th><td class="c">$444</td><td class="c">$444</td><td class="c">$644</td><td class="c">$644</td><td class="c">$1,775</td></tr>
-            <tr><th scope="row">Employee + spouse + child(ren)</th><td class="c">$491</td><td class="c">$491</td><td class="c">$691</td><td class="c">$691</td><td class="c">$1,964</td></tr>
-          </tbody>
-        </table></div>
-        <h4>Standard PPO</h4>
-        <div class="tw wide"><table>
-          <caption class="sr-only">2027 monthly premiums for Standard PPO</caption>
-          <thead><tr><th scope="col">Tier</th><th scope="col" class="c">BCBST Network S</th><th scope="col" class="c">Cigna LocalPlus</th><th scope="col" class="c">BCBST Network P</th><th scope="col" class="c">Cigna Open Access</th><th scope="col" class="c">Employer share</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Employee only</th><td class="c">$122</td><td class="c">$122</td><td class="c">$222</td><td class="c">$222</td><td class="c">$755</td></tr>
-            <tr><th scope="row">Employee + child(ren)</th><td class="c">$182</td><td class="c">$182</td><td class="c">$292</td><td class="c">$292</td><td class="c">$1,133</td></tr>
-            <tr><th scope="row">Employee + spouse</th><td class="c">$286</td><td class="c">$286</td><td class="c">$486</td><td class="c">$486</td><td class="c">$1,775</td></tr>
-            <tr><th scope="row">Employee + spouse + child(ren)</th><td class="c">$316</td><td class="c">$316</td><td class="c">$516</td><td class="c">$516</td><td class="c">$1,964</td></tr>
-          </tbody>
-        </table></div>
-        <h4>CDHP/HSA</h4>
-        <div class="tw wide"><table>
-          <caption class="sr-only">2027 monthly premiums for CDHP/HSA</caption>
-          <thead><tr><th scope="col">Tier</th><th scope="col" class="c">BCBST Network S</th><th scope="col" class="c">Cigna LocalPlus</th><th scope="col" class="c">BCBST Network P</th><th scope="col" class="c">Cigna Open Access</th><th scope="col" class="c">Employer share</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Employee only</th><td class="c">$84</td><td class="c">$84</td><td class="c">$184</td><td class="c">$184</td><td class="c">$755</td></tr>
-            <tr><th scope="row">Employee + child(ren)</th><td class="c">$126</td><td class="c">$126</td><td class="c">$236</td><td class="c">$236</td><td class="c">$1,133</td></tr>
-            <tr><th scope="row">Employee + spouse</th><td class="c">$197</td><td class="c">$197</td><td class="c">$397</td><td class="c">$397</td><td class="c">$1,775</td></tr>
-            <tr><th scope="row">Employee + spouse + child(ren)</th><td class="c">$218</td><td class="c">$218</td><td class="c">$418</td><td class="c">$418</td><td class="c">$1,964</td></tr>
-          </tbody>
-        </table></div>
-      </div>
+      <div id="premiums"></div>
     </article>
   </section>
 
@@ -375,13 +354,13 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
           <h4>Cigna DHMO</h4>
           <ul>
             <li>No deductible, no annual maximum and no waiting periods.</li>
-            <li>You pay copays listed in the Patient Charge Schedule, plus lab fees for certain services.</li>
+            <li>You pay copays listed in the <a href="https://stateoftn.cigna.com/static/stateoftn-cigna-com/docs/dental-plan/tn-and-all-other-states-not-listed-below-pc-2027.pdf" target="_blank" rel="noopener">Patient Charge Schedule</a>, plus lab fees for certain services.</li>
             <li>Teledentistry is $0 copay with no frequency limit.</li>
             <li><b>Exams and cleanings:</b> oral evaluations are limited to a combined 4 per 12 consecutive months (periodic, comprehensive oral, and comprehensive periodontal evaluations). Cleanings: 2 per calendar year, and you can add 2 more per year at a $45 copay.</li>
             <li><b>Orthodontics:</b> $3,360 maximum ($140 x 24 months) for the treatment fee only. You pay the full charge after 24 months. No age limit.</li>
             <li><b>Network:</b> you must select and use a Cigna network general dentist from the DHMO list for the state dental plan and tell Cigna your choice. You may select a network pediatric dentist for a child under 13, who is considered a specialist.</li>
             <li>Check the network for your location before enrolling. You may be able to cancel if there are no network general dentists within 25 driving miles of your home.</li>
-            <li>Find providers: <a href="https://hcpdirectory.cigna.com/web/public/consumer/directory/search?consumerCode=HDC060">hcpdirectory.cigna.com provider directory</a></li>
+            <li>Find providers: <a href="https://hcpdirectory.cigna.com/web/public/consumer/directory/search?consumerCode=HDC060" target="_blank" rel="noopener">hcpdirectory.cigna.com/web/public/consumer/directory/search?consumerCode=HDC060</a></li>
           </ul>
         </div>
         <div class="sub">
@@ -394,11 +373,11 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
             <li><b>Exams and cleanings:</b> 2 routine office exams and 2 problem-focused exams (office or teledentistry) per calendar year.</li>
             <li><b>Orthodontics:</b> $1,500 lifetime plan benefit maximum per person.</li>
             <li>No waiting periods.</li>
-            <li><b>Network:</b> you can use any dentist, but you save money and get maximum benefits with an in-network MetLife PDP Plus provider. Find providers at <a href="https://www.metlife.com/StateOfTN">metlife.com/StateOfTN</a>.</li>
+            <li><b>Network:</b> you can use any dentist, but you save money and get maximum benefits with an in-network MetLife PDP Plus provider. Find providers at <a href="https://www.metlife.com/StateofTN" target="_blank" rel="noopener">metlife.com/StateOfTN</a>.</li>
           </ul>
         </div>
       </div>
-      <p class="fine">Details: <a href="https://www.tn.gov/partnersforhealth/other-benefits/dental">tn.gov/partnersforhealth/other-benefits/dental</a>. Review member handbooks and certificates of coverage at <a href="https://www.tn.gov/partnersforhealth/publications/publications">tn.gov/partnersforhealth/publications/publications</a>. Request pre-treatment estimates to understand costs before service.</p>
+      <p class="fine">Details: <a href="https://www.tn.gov/partnersforhealth/other-benefits/dental" target="_blank" rel="noopener">tn.gov/partnersforhealth/other-benefits/dental</a>. Review member handbooks and certificates of coverage at <a href="https://www.tn.gov/partnersforhealth/publications/publications" target="_blank" rel="noopener">tn.gov/partnersforhealth/publications/publications</a>. Request pre-treatment estimates to understand costs before service.</p>
     </article>
     <article class="blk">
       <h3>2027 monthly dental premiums</h3>
@@ -437,7 +416,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
     <h2>Vision</h2>
     <article class="blk">
       <h3>2027 covered vision services</h3>
-      <p class="muted">Copays are what the member pays. Allowances and percentage discounts are what the carrier covers. Actual costs and benefits may vary by plan design. Exclusions and limitations may apply. Out-of-network costs are in the EyeMed Handbook at <a href="https://www.tn.gov/partnersforhealth/publications/publications.html">tn.gov/partnersforhealth/publications/publications.html</a>. Revised July 2026.</p>
+      <p class="muted">Copays are what the member pays. Allowances and percentage discounts are what the carrier covers. Actual costs and benefits may vary by plan design. Exclusions and limitations may apply. Out-of-network costs are in the EyeMed Handbook at <a href="https://www.tn.gov/partnersforhealth/publications/publications.html" target="_blank" rel="noopener">tn.gov/partnersforhealth/publications/publications.html</a>. Revised July 2026.</p>
       <div class="tw wide"><table>
         <thead><tr><th>Service</th><th>Basic plan, in-network [1]</th><th>Expanded plan, in-network [1]</th></tr></thead>
         <tbody>
@@ -487,7 +466,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
         <li>15% off the amount over the contact lens allowance for conventional contact lenses.</li>
         <li>20% off items not covered by the plan at EyeMed in-network locations.</li>
       </ul>
-      <p class="fine">Discounts may not be available with all providers. Some exclusions and limitations apply. See the EyeMed Handbook at <a href="https://www.tn.gov/partnersforhealth/publications/publications.html">tn.gov/partnersforhealth/publications/publications.html</a>.</p>
+      <p class="fine">Discounts may not be available with all providers. Some exclusions and limitations apply. See the EyeMed Handbook at <a href="https://www.tn.gov/partnersforhealth/publications/publications.html" target="_blank" rel="noopener">tn.gov/partnersforhealth/publications/publications.html</a>.</p>
     </article>
     <article class="blk">
       <h3>2027 monthly vision premiums</h3>
@@ -540,7 +519,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
           <tr><th>Employee + dependent voluntary AD&amp;D</th><td>Spouse and child coverage is a percentage of the employee's voluntary AD&amp;D amount: spouse without children 60%; spouse with children 40%; each child 10%</td><td><ul><li>The first eligible newborn is automatically covered for 10% of the employee's AD&amp;D coverage for 31 days from live birth</li><li>To continue coverage on the first child, elect dependent coverage within 60 calendar days of the birth</li></ul></td></tr>
         </tbody></table></div>
       <p class="fine">If your spouse or child is eligible for coverage as an employee, they cannot be covered as your dependent. A child may be covered by only one employee.<br>*Beginning at age 65, employee basic term life/AD&amp;D coverage reduces to a percentage of the amount you would have been eligible for before 65: 65% at age 65, 45% at age 70 and 30% at age 75.</p>
-      <div class="note">The packet shows the voluntary employee term life maximum as "$500,000 or 7x base annual salary" in the coverage table and as "five times base annual salary" in the no-health-questions section below. Confirm the current multiple with the Benefits Service Center.</div>
+      <div class="note"><b>How the 5x and 7x limits fit together:</b> without health questions, you can elect up to 5x your base annual salary (the guaranteed issue amount). Above that, up to 7x salary or $500,000, whichever is less, you must answer health questions.</div>
     </article>
 
     <article class="blk">
@@ -622,7 +601,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
           <h4>Voluntary AD&amp;D</h4>
           <p>$0.021 per $1,000 of enrolled coverage per person, per month.</p>
           <h4>How to calculate your life premium</h4>
-          <p>Coverage amount &divide; 1,000 &times; your age-based rate = monthly premium. You can also use Benefit Scout at <a href="https://LifeBenefits.com/stateoftn">LifeBenefits.com/stateoftn</a>.</p>
+          <p>Coverage amount &divide; 1,000 &times; your age-based rate = monthly premium. You can also use Benefit Scout at <a href="https://www.lifebenefits.com/stateoftn" target="_blank" rel="noopener">LifeBenefits.com/stateoftn</a>.</p>
         </div>
       </div>
     </article>
@@ -685,9 +664,9 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
       <h3>Learn more and enroll in life insurance</h3>
       <ul>
         <li><b>Basic term life and basic AD&amp;D:</b> central state government and state higher education employees are enrolled automatically, and the state pays the premiums.</li>
-        <li><b>Voluntary term life:</b> enroll yourself or eligible dependents at Securian Financial's page, <b><a href="https://LifeBenefits.com/stateoftn">LifeBenefits.com/stateoftn</a></b>.</li>
+        <li><b>Voluntary term life:</b> enroll yourself or eligible dependents at Securian Financial's page, <b><a href="https://www.lifebenefits.com/stateoftn" target="_blank" rel="noopener">LifeBenefits.com/stateoftn</a></b>.</li>
         <li><b>Voluntary AD&amp;D:</b> enroll in Edison.</li>
-        <li><b>Benefit Scout</b> is an online decision tool that asks a few questions, suggests coverage options for you and your family, and gives cost estimates. Log in at <a href="https://LifeBenefits.com/stateoftn">LifeBenefits.com/stateoftn</a>, click "Get started," then "Visit Benefit Scout."</li>
+        <li><b><a href="https://web1.lifebenefits.com/sites/lbwem/tennessee" target="_blank" rel="noopener">Benefit Scout</a></b> is an online decision tool that asks a few questions, suggests coverage options for you and your family, and gives cost estimates. Log in at <a href="https://www.lifebenefits.com/stateoftn" target="_blank" rel="noopener">LifeBenefits.com/stateoftn</a>, click "Get started," then "Visit Benefit Scout."</li>
       </ul>
       <div class="contact">
         <div><b>Your ID</b>The letters "TN" followed by your Edison ID number</div>
@@ -714,13 +693,13 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
         <li>Don't have much in savings or an emergency fund</li>
         <li>Take part in high-risk activities</li>
       </ul>
-      <div class="note"><b>Special considerations:</b> If you work in a state with state-mandated disability or paid medical leave benefits ("State Benefits"), consider carefully whether to enroll. If you are eligible for State Benefits, you must apply if required by state law. If permitted, your STD benefit is reduced by State Benefits or other government benefits, and you may receive only the minimum weekly benefit. Consider whether you need coverage beyond the State Benefit.</div>
+      <div class="note"><b>Special considerations:</b> If you work in a state with state-mandated disability or paid medical leave benefits ("State Benefits"), consider carefully whether to enroll. If you are eligible for State Benefits, you must apply if required by state law. If permitted, your STD benefit is reduced by State Benefits or other government benefits, and you may receive only the minimum weekly benefit. Consider whether you need coverage beyond the State Benefit.<br><span class="fine">These jurisdictions include, but may not be limited to, California, Colorado, Connecticut, Delaware, District of Columbia, Hawaii, Maine, Massachusetts, Minnesota, New Jersey, New York, Oregon, Puerto Rico, Rhode Island and Washington (and Maryland as of Jan. 3, 2028, and Virginia as of Dec. 1, 2028).</span></div>
       <div class="cols">
         <div class="sub"><h4>Short-term disability</h4>Up to <b>60%</b> of your weekly predisability salary. Benefits start after <b>14 calendar days</b>.*</div>
         <div class="sub"><h4>Long-term disability</h4>Up to <b>63%</b> of your monthly predisability salary. Benefits start after <b>90 calendar days</b>.*</div>
       </div>
       <p class="fine">*All accrued paid leave (annual leave, sick leave and compensatory time) and paid parental leave, subject to employer rules, must be exhausted before benefit payments begin.</p>
-      <p>Questions: MetLife's Partners for Health service line, <b class="tn"><a href="tel:+18557008001">855-700-8001</a></b> (7 a.m. to 10 p.m. CT, Monday to Friday), or <a href="https://www.metlife.com/stateoftn">metlife.com/stateoftn</a>. Review the short-term and long-term disability certificates of coverage for full details.</p>
+      <p>Questions: MetLife's Partners for Health service line, <b class="tn"><a href="tel:+18557008001">855-700-8001</a></b> (7 a.m. to 10 p.m. CT, Monday to Friday), or <a href="https://www.metlife.com/StateofTN" target="_blank" rel="noopener">metlife.com/stateoftn</a>. Review the short-term and long-term disability certificates of coverage for full details.</p>
     </article>
 
     <article class="blk">
@@ -791,7 +770,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
   <!-- FLEX -->
   <section class="cat" id="flex" data-cat="flex" data-label="Flexible Benefits">
     <h2>Flexible Benefits</h2>
-    <p class="intro">State and Higher Education employees: enrollment details are on the Partners for Health Flexible Benefits page, <a href="https://www.tn.gov/partnersforhealth/other-benefits/flexible-benefits.html">tn.gov/partnersforhealth/other-benefits/flexible-benefits.html</a>. Local Education and Local Government employees may have access through their employer; check with your human resources office. Accounts are administered by TASC: <a href="tel:+18005756277">800-575-6277</a>, <a href="https://stateoftntasc.com">stateoftntasc.com</a>.</p>
+    <p class="intro">State and Higher Education employees: enrollment details are on the Partners for Health Flexible Benefits page, <a href="https://www.tn.gov/partnersforhealth/other-benefits/flexible-benefits.html" target="_blank" rel="noopener">tn.gov/partnersforhealth/other-benefits/flexible-benefits.html</a>. Local Education and Local Government employees may have access through their employer; check with your human resources office. Accounts are administered by TASC: <a href="tel:+18005756277">800-575-6277</a>, <a href="https://www.stateoftntasc.com" target="_blank" rel="noopener">stateoftntasc.com</a>.</p>
     <article class="blk">
       <h3>Comparing health spending accounts for 2027</h3>
       <div class="tw wide"><table>
@@ -829,8 +808,8 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
           <ul>
             <li>You do <b>not</b> qualify for a medical FSA if you are enrolled in the consumer-driven health plan with a health savings account.</li>
             <li>The TASC debit card is the preferred way to pay for eligible expenses. It lets you pay and verify most expenses at the point of purchase, with no reimbursement wait.</li>
-            <li>Full eligible-expense lists: IRS Publications 502 and 969 at <a href="https://www.irs.gov">irs.gov</a>.</li>
-            <li>Estimate your savings with the FSA Calculator at <a href="https://tasconline.com/fsa-calculator">tasconline.com/fsa-calculator</a>.</li>
+            <li>Full eligible-expense lists: IRS Publications 502 and 969 at <a href="https://www.irs.gov/" target="_blank" rel="noopener">irs.gov</a>.</li>
+            <li>Estimate your savings with the FSA Calculator at <a href="https://www.tasconline.com/fsa-calculator/" target="_blank" rel="noopener">tasconline.com/fsa-calculator</a>.</li>
           </ul>
         </div>
       </div>
@@ -853,7 +832,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
         <div><h4>Vision expenses</h4><ul><li>Eye exams</li><li>Prescription glasses and contact lenses</li><li>Contact lens solution</li><li>Laser eye surgery, LASIK</li></ul></div>
         <div><h4>Dental expenses</h4><ul><li>Orthodontia (braces, Invisalign)</li><li>Cleanings</li><li>Crowns</li><li>Fillings</li></ul></div>
       </div>
-      <p class="fine">An LPFSA is subject to the same IRS plan limits as a medical FSA. Eligible expenses: IRS Publication 502 at <a href="https://www.irs.gov">irs.gov</a>.</p>
+      <p class="fine">An LPFSA is subject to the same IRS plan limits as a medical FSA. Eligible expenses: IRS Publication 502 at <a href="https://www.irs.gov/" target="_blank" rel="noopener">irs.gov</a>.</p>
     </article>
 
     <article class="blk">
@@ -878,7 +857,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
 
     <article class="blk">
       <h3>Dependent care: eligible and ineligible expenses</h3>
-      <p class="muted">A partial list. For more, see IRS Publication 503 at <a href="https://www.irs.gov">irs.gov</a>.</p>
+      <p class="muted">A partial list. For more, see IRS Publication 503 at <a href="https://www.irs.gov/" target="_blank" rel="noopener">irs.gov</a>.</p>
       <div class="tw wide"><table>
         <thead><tr><th>Expense</th><th class="c">Eligible?</th><th>Expense</th><th class="c">Eligible?</th></tr></thead>
         <tbody>
@@ -916,9 +895,9 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
       <p>Here4TN provides Emotional Wellbeing Solutions (your employee assistance program) and behavioral health and substance use services, from emotional health to financial wellbeing. It is confidential in accordance with the law, available to you and your covered family members, and open 24/7.</p>
       <div class="contact">
         <div><b>Call 24/7</b><span class="big tn"><a href="tel:+18554373486">1-855-Here4TN (1-855-437-3486)</a></span></div>
-        <div><b>Online</b><a href="https://Here4TN.com">Here4TN.com</a><br>Live chat Monday to Friday, 8:30 a.m. to 3 p.m. CT</div>
+        <div><b>Online</b><a href="https://www.here4tn.com" target="_blank" rel="noopener">Here4TN.com</a><br>Live chat Monday to Friday, 8:30 a.m. to 3 p.m. CT</div>
       </div>
-      <div class="note"><b>In an emergency, call 911 or go to the nearest emergency room.</b> If you have thoughts of hurting yourself or others, call your health care professional, 911, or 988 (Suicide &amp; Crisis Lifeline). This program is not for emergency or urgent care needs and is not a substitute for a doctor's or professional's care.</div>
+      <div class="note"><b>In an emergency, call 911 or go to the nearest emergency room.</b> If you have thoughts of hurting yourself or others, call your health care professional, 911, or <a href="tel:988">988</a> (Suicide &amp; Crisis Lifeline). This program is not for emergency or urgent care needs and is not a substitute for a doctor's or professional's care.</div>
     </article>
 
     <article class="blk">
@@ -929,10 +908,10 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
           <tr class="grp"><th colspan="2">Behavioral health services</th></tr>
           <tr><th>Counseling</th><td>Telephone, in-person and virtual in-network counseling, including up to <b>five no-cost short-term counseling visits per issue, per individual, per year</b>. You may also have access to long-term counseling through your behavioral health benefits.</td></tr>
           <tr><th>First Call provider search</th><td>The Here4TN team can search for an available provider on your behalf, based on your preferences, concerns and availability.</td></tr>
-          <tr><th>Talkspace online therapy</th><td>Connect virtually with a licensed in-network therapist, with unlimited text messaging and real-time audio/video appointments. Your EAP includes five Talkspace visits per issue, per year at no cost. Before scheduling, call <a href="tel:+18554373486">1-855-Here4TN</a> or visit <a href="https://Here4TN.com">Here4TN.com</a> for the required authorization. After the five no-cost sessions, use your behavioral health benefits at the applicable cost share. You can start therapy within hours of choosing a therapist.</td></tr>
+          <tr><th>Talkspace online therapy</th><td>Connect virtually with a licensed in-network therapist, with unlimited text messaging and real-time audio/video appointments. Talkspace is subject to the same copays, coinsurance and deductibles as in-person visits, but your EAP includes five Talkspace visits per issue, per year at no cost. Before scheduling, call <a href="tel:+18554373486">1-855-Here4TN</a> or visit <a href="https://www.here4tn.com" target="_blank" rel="noopener">Here4TN.com</a> for the required authorization. After the five no-cost sessions, use your behavioral health benefits at the applicable cost share. You can start therapy within hours of choosing a therapist.</td></tr>
           <tr><th>Calm Health</th><td>A stress, sleep and coping-skills app at no cost as part of your benefits. If you already have it, no action is needed. For help accessing it, call Here4TN.</td></tr>
           <tr><th>Virtual visits</th><td>Meet with a psychiatrist or therapist by secure video to evaluate and treat general mental health conditions such as depression and anxiety. Available for authorized no-cost EAP visits and for behavioral health services, which have the same copays, coinsurance and deductibles as in-person visits.</td></tr>
-          <tr><th>Online support and self-help tools</th><td>Articles, videos, interactive self-help programs, financial calculators and more at <a href="https://Here4TN.com">Here4TN.com</a>, plus a search for in-network counselors.</td></tr>
+          <tr><th>Online support and self-help tools</th><td>Articles, videos, interactive self-help programs, financial calculators and more at <a href="https://www.here4tn.com" target="_blank" rel="noopener">Here4TN.com</a>, plus a search for in-network counselors.</td></tr>
           <tr><th>Substance use services</th><td>Confidential support 24/7. A licensed advocate helps with an initial assessment, community resources, a personalized treatment plan and family support, and connects you to in-network behavioral health services. Call to find a provider for immediate access to a clinician, including substance use preferred facilities where treatment costs are waived.</td></tr>
           <tr><th>Family Support Program</th><td>A single point of contact for caregivers of children with behavioral health concerns, including autism, anxiety and depression, to help navigate schools, providers and public agencies.</td></tr>
           <tr><th>Autism / applied behavioral analysis (ABA) care advocacy</th><td>Your health plan has an expanded ABA benefit. Care advocacy helps families learn about services for a child with an autism spectrum diagnosis.</td></tr>
@@ -949,7 +928,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
       <ul><li>Depression, anxiety and stress</li><li>Living with chronic conditions</li><li>Sleep disorders</li><li>Substance use issues</li><li>Relationship and family concerns</li></ul>
       <h4>WorkLife Services connect you with</h4>
       <p>Child, family and parenting support; education resources; adult care and eldercare support; chronic illness and condition support; personal services; legal services; and financial services.</p>
-      <p>Optum is your behavioral health and substance use benefits administrator. Member handbook and plan documents: <a href="https://www.tn.gov/partnersforhealth">tn.gov/partnersforhealth</a>.</p>
+      <p>Optum is your behavioral health and substance use benefits administrator. Member handbook and plan documents: <a href="https://www.tn.gov/partnersforhealth" target="_blank" rel="noopener">tn.gov/partnersforhealth</a>.</p>
       <ul class="fine">
         <li>State and Higher Education: Emotional Wellbeing Solutions are available to all benefits-eligible employees and their eligible family members, even if they are not enrolled in medical insurance.</li>
         <li>Local Education and Local Government: these services are for employees enrolled in medical insurance. Dependents are eligible even if they are not enrolled in medical insurance.</li>
@@ -964,7 +943,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
       <h3>Take Charge at Work</h3>
       <p>Feeling down or finding it hard to stay focused at work? It is normal to feel down once in a while, but losing interest in things you usually enjoy, having trouble concentrating or feeling sluggish may signal something more. Take Charge at Work is a confidential telephonic coaching program designed by Optum to help working adults recognize and manage symptoms of stress and depression at work.</p>
       <ol class="steps">
-        <li><b>Take the assessment</b>Go to <a href="https://takechargeatwork.com/here4TN">takechargeatwork.com/here4TN</a> and answer 12 simple questions about your risk for depression. It takes a couple of minutes and is completely confidential.</li>
+        <li><b>Take the assessment</b>Go to <a href="https://takechargeatwork.com/here4TN" target="_blank" rel="noopener">takechargeatwork.com/here4TN</a> and answer 12 simple questions about your risk for depression. It takes a couple of minutes and is completely confidential.</li>
         <li><b>Start the program</b>If you qualify, you are prompted to call <a href="tel:+18554373486">855-Here4TN (855-437-3486)</a> for a screening call of up to 20 minutes, then enroll and connect with a coach.</li>
         <li><b>Feel better</b>You and your coach build a personal plan using the <i>Creating a Balance</i> workbook, at a pace that works for you.</li>
       </ol>
@@ -992,7 +971,7 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
 
   </main>
   <footer class="foot">
-    <p>Built from the Executive Benefits Packet 2027 (Partners for Health, State of Tennessee). Rates, dates and plan details are as printed in that packet. Confirm anything you rely on with the Benefits Service Center, <a href="tel:+18002539981">800-253-9981</a> or <a href="tel:+16157413590">615-741-3590</a>, and see the member handbooks at <a href="https://www.tn.gov/partnersforhealth">tn.gov/partnersforhealth</a>.</p>
+    <p>Built from the Executive Benefits Packet 2027 (Partners for Health, State of Tennessee). Rates, dates and plan details are as printed in that packet. Confirm anything you rely on with the Benefits Service Center, <a href="tel:+18002539981">800-253-9981</a> or <a href="tel:+16157413590">615-741-3590</a>, and see the member handbooks at <a href="https://www.tn.gov/partnersforhealth" target="_blank" rel="noopener">tn.gov/partnersforhealth</a>.</p>
   </footer>
 </div>
 
@@ -1008,62 +987,84 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
   ];
   var html="";
   plans.forEach(function(p){
-    html+='<h4>'+p.name+'</h4><div class="tw wide"><table><caption class="sr-only">2027 monthly premiums for '+p.name+'</caption><thead><tr><th scope="col">Tier</th><th scope="col" class="c">BCBST Network S</th><th scope="col" class="c">Cigna LocalPlus</th><th scope="col" class="c">BCBST Network P</th><th scope="col" class="c">Cigna Open Access</th><th scope="col" class="c">Employer share</th></tr></thead><tbody>';
+    html+='<h4>'+p.name+'</h4><div class="tw wide"><table><thead><tr><th>Tier</th><th class="c">BCBST Network S</th><th class="c">Cigna LocalPlus</th><th class="c">BCBST Network P</th><th class="c">Cigna Open Access</th><th class="c">Employer share</th></tr></thead><tbody>';
     p.rows.forEach(function(r,i){
-      html+='<tr><th scope="row">'+tiers[i]+'</th>'+r.map(function(v){return '<td class="c">$'+v.toLocaleString("en-US")+'</td>';}).join('')+'<td class="c">$'+employer[i].toLocaleString("en-US")+'</td></tr>';
+      html+='<tr><th>'+tiers[i]+'</th>'+r.map(function(v){return '<td class="c">$'+v.toLocaleString("en-US")+'</td>';}).join('')+'<td class="c">$'+employer[i].toLocaleString("en-US")+'</td></tr>';
     });
     html+='</tbody></table></div>';
   });
   document.getElementById("premiums").innerHTML=html;
 
-  /* ---------- table accessibility ---------- */
-  function enhanceTables(){
-    [].slice.call(document.querySelectorAll("table")).forEach(function(table,i){
-      var caption=table.querySelector("caption"), wrapper=table.closest(".tw"), heading=null, cursor=wrapper;
-      if(!caption){
-        while(cursor && !heading){
-          cursor=cursor.previousElementSibling;
-          if(cursor && /^H[34]$/.test(cursor.tagName)) heading=cursor;
-        }
-        if(!heading){
-          var block=table.closest(".blk");
-          heading=block&&block.querySelector("h3");
-        }
-        if(heading){
-          if(!heading.id) heading.id="table-heading-"+i;
-          caption=document.createElement("caption");
-          caption.className="sr-only";
-          caption.textContent=heading.textContent.trim();
-          table.insertBefore(caption,table.firstChild);
-          table.setAttribute("aria-labelledby",heading.id);
-        }
-      }
-      [].slice.call(table.querySelectorAll("thead th")).forEach(function(th){
-        if(!th.hasAttribute("scope")) th.setAttribute("scope",th.colSpan>1?"colgroup":"col");
-      });
-      [].slice.call(table.querySelectorAll("tbody tr")).forEach(function(row){
-        [].slice.call(row.children).forEach(function(cell){
-          if(cell.tagName==="TH"&&!cell.hasAttribute("scope")) cell.setAttribute("scope",row.classList.contains("grp")?"rowgroup":"row");
-        });
-      });
-    });
-  }
-  enhanceTables();
-
   /* ---------- search and filter ---------- */
   var $=function(id){return document.getElementById(id)};
   var q=$("q"), clr=$("clr"), chipsEl=$("chips"), statusEl=$("status"), empty=$("empty");
   var sections=[].slice.call(document.querySelectorAll(".cat"));
-  var blocks=[].slice.call(document.querySelectorAll(".blk")).map(function(b){
-    var sec=b.closest(".cat");
-    var t=(sec.getAttribute("data-label")+" "+b.textContent).toLowerCase().replace(/\s+/g," ");
-    return {el:b,cat:sec.getAttribute("data-cat"),text:t};
-  });
-  var active="all";
   var cats=sections.map(function(s){return {id:s.getAttribute("data-cat"),label:s.getAttribute("data-label")}});
+  var active="all";
+  function norm(t){return t.toLowerCase().replace(/[‘’]/g,"'").replace(/\s+/g," ")}
 
-  function terms(){return q.value.toLowerCase().split(/\s+/).filter(Boolean)}
-  function matches(b,ts){return ts.every(function(t){return b.text.indexOf(t)!==-1})}
+  /* Everyday words people search for, mapped to the words the packet uses. */
+  var SYN={
+    glasses:["eyeglass","spectacle","frame","lens"], eyeglasses:["eyeglass","spectacle","frame","lens"],
+    frames:["frame"], contacts:["contact lens"], eye:["vision","eye"], eyes:["vision","eye"], optometrist:["vision","eye exam"],
+    kid:["child"], kids:["child"], children:["child"], son:["child"], daughter:["child"], baby:["newborn","well-baby","maternity","birth"],
+    newborn:["newborn","birth"], pregnant:["maternity","prenatal"], pregnancy:["maternity","prenatal"], maternity:["maternity","prenatal","labor and delivery"],
+    wife:["spouse"], husband:["spouse"], married:["spouse","marriage"], marriage:["spouse","marriage"],
+    braces:["orthodont","braces","invisalign"], invisalign:["orthodont","invisalign"], orthodontist:["orthodont"],
+    teeth:["dental","dentist"], tooth:["dental","dentist"], dentist:["dental","dentist"], cleaning:["cleaning"],
+    therapy:["therapy","therapist","counseling","talkspace","behavioral health"], therapist:["therapist","therapy","counseling","talkspace"],
+    counseling:["counseling","therapy","therapist"], counselor:["counseling","therapist"], mental:["behavioral","mental","emotional"],
+    depression:["depression"], anxiety:["anxiety"], stress:["stress"],
+    hsa:["hsa","health savings account"], fsa:["fsa","flexible spending"], lpfsa:["limited purpose","l-fsa","lpfsa"],
+    doctor:["office visit","primary care","specialist","physician"], pcp:["primary care"], physician:["physician","office visit"],
+    drugs:["pharmacy","medication","prescription","drug"], drug:["pharmacy","medication","prescription","drug"], meds:["pharmacy","medication","prescription"],
+    medicine:["pharmacy","medication","prescription"], rx:["pharmacy","prescription"], prescriptions:["prescription","pharmacy"],
+    er:["emergency"], hospital:["hospital","inpatient","facility"], surgery:["surgery"],
+    xray:["x-ray"], "x-ray":["x-ray"], mri:["mri"], scan:["scan","imaging"], ct:["ct"],
+    ozempic:["obesity"], wegovy:["obesity"], "glp-1":["obesity"], weight:["obesity"],
+    chiropractor:["chiropractic"], virtual:["virtual","telehealth","teladoc","mdlive","teledentistry"], telemedicine:["telehealth","virtual"],
+    daycare:["dependent care","childcare","day camp","preschool"], childcare:["childcare","dependent care","babysitting"], babysitter:["babysitting"], nanny:["nanny"],
+    death:["life insurance","term life","ad&d"], add:["ad&d"], accidental:["ad&d","accidental"],
+    cost:["premium","cost","copay","coinsurance"], costs:["premium","cost","copay","coinsurance"], price:["premium","cost"], prices:["premium","cost"],
+    oop:["out-of-pocket"], max:["maximum"],
+    lawyer:["legal","attorney"], attorney:["attorney","legal"], money:["financial","money coach"], debt:["debt","financial"], taxes:["tax"],
+    retire:["retire"], retirement:["retire"], retiree:["retire"],
+    deadline:["deadline","30 days","december 2"], login:["log in","login","password","user id"], password:["password"],
+    phone:["phone","800-","855-","615-","866-"], call:["call","phone"], contact:["contact","phone","email"],
+    std:["short-term disability"], ltd:["long-term disability"], disability:["disability"],
+    eap:["here4tn","employee assistance","emotional wellbeing"], cobra:["cobra"]
+  };
+  function termGroups(){
+    return norm(q.value).split(" ").filter(Boolean).map(function(t){
+      var alts=[t];
+      if(SYN[t]) alts=alts.concat(SYN[t]);
+      if(t.length>4&&/s$/.test(t)) alts.push(t.replace(/(es|s)$/,""));
+      return alts;
+    });
+  }
+  function hasAll(text,groups){return groups.every(function(g){return g.some(function(a){return text.indexOf(a)!==-1})})}
+
+  /* Index blocks, and table rows with enough context (section, block title, nearest subheading, column headers, row group). */
+  var blocks=[].slice.call(document.querySelectorAll(".blk")).map(function(b){
+    var sec=b.closest(".cat"), label=sec.getAttribute("data-label");
+    var tables=[].slice.call(b.querySelectorAll(".tw")).map(function(tw){
+      var prev=tw.previousElementSibling, h4="";
+      while(prev){ if(prev.tagName==="H4"||prev.tagName==="H3"){h4=prev.textContent;break} prev=prev.previousElementSibling }
+      var thead=tw.querySelector("thead"), base=label+" "+h4+" "+(thead?thead.textContent:"");
+      var rows=[], group=null, groups=[];
+      [].slice.call(tw.querySelectorAll("tbody tr")).forEach(function(tr){
+        if(tr.classList.contains("grp")){ group={el:tr,rows:[]}; groups.push(group); return }
+        var r={el:tr,text:norm(base+" "+(group?group.el.textContent:"")+" "+tr.textContent)};
+        rows.push(r); if(group) group.rows.push(r);
+      });
+      var bar=document.createElement("div"); bar.className="tbar"; bar.hidden=true;
+      tw.parentNode.insertBefore(bar,tw.nextSibling);
+      var t={tw:tw,rows:rows,groups:groups,bar:bar,expanded:false};
+      bar.addEventListener("click",function(e){ if(e.target.closest("button")){ t.expanded=!t.expanded; apply(true) } });
+      return t;
+    });
+    return {el:b,cat:sec.getAttribute("data-cat"),text:norm(label+" "+b.textContent),tables:tables};
+  });
 
   function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}
   function clearMarks(){
@@ -1071,15 +1072,13 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
       var p=m.parentNode; p.replaceChild(document.createTextNode(m.textContent),m); p.normalize();
     });
   }
-  function highlight(el,ts){
-    var re=new RegExp("("+ts.map(esc).join("|")+")","gi");
+  function highlight(el,alts){
+    var re=new RegExp("("+alts.sort(function(a,b){return b.length-a.length}).map(esc).join("|")+")","gi");
     var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null), nodes=[], n;
-    while((n=w.nextNode())){ if(n.nodeValue.trim()&&!/^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName)) nodes.push(n); }
+    while((n=w.nextNode())){ if(n.nodeValue.trim()&&!n.parentNode.closest(".tbar")&&!n.parentNode.closest(".rowoff")) nodes.push(n) }
     nodes.forEach(function(node){
-      var s=node.nodeValue; re.lastIndex=0;
-      if(!re.test(s)) return;
-      var frag=document.createDocumentFragment(), last=0, m;
-      re.lastIndex=0;
+      var s=node.nodeValue; re.lastIndex=0; if(!re.test(s)) return;
+      var frag=document.createDocumentFragment(), last=0, m; re.lastIndex=0;
       while((m=re.exec(s))){
         if(m.index>last) frag.appendChild(document.createTextNode(s.slice(last,m.index)));
         var mk=document.createElement("mark"); mk.textContent=m[0]; frag.appendChild(mk);
@@ -1090,45 +1089,65 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
     });
   }
 
+  function filterTables(b,groups){
+    var found=0;
+    b.tables.forEach(function(t){
+      var total=t.rows.length;
+      if(!groups.length){ t.rows.forEach(function(r){r.el.classList.remove("rowoff")}); t.groups.forEach(function(g){g.el.classList.remove("rowoff")}); t.tw.classList.remove("collapsed"); t.bar.hidden=true; return }
+      var hits=0;
+      t.rows.forEach(function(r){ var m=hasAll(r.text,groups); r.el.classList.toggle("rowoff",!m&&!t.expanded); if(m) hits++ });
+      t.groups.forEach(function(g){ g.el.classList.toggle("rowoff",!t.expanded&&!g.rows.some(function(r){return !r.el.classList.contains("rowoff")})) });
+      found+=hits;
+      t.tw.classList.toggle("collapsed",hits===0&&!t.expanded);
+      if(hits===total){ t.bar.hidden=true; return }
+      t.bar.hidden=false;
+      t.bar.innerHTML=t.expanded
+        ? '<span>Showing all '+total+' rows</span> <button type="button">Show only matching rows</button>'
+        : (hits ? '<span>Showing '+hits+' of '+total+' rows</span> <button type="button">Show all rows</button>'
+                : '<span>No rows in this table match</span> <button type="button">Show table ('+total+' rows)</button>');
+    });
+    return found;
+  }
+
   function buildChips(counts,total){
     var items=[{id:"all",label:"All benefits",n:total}].concat(cats.map(function(c){return {id:c.id,label:c.label,n:counts[c.id]||0}}));
     chipsEl.innerHTML="";
     items.forEach(function(c){
       var b=document.createElement("button");
       b.type="button"; b.className="chip"; b.setAttribute("data-id",c.id);
-      b.setAttribute("aria-pressed",String(active===c.id)); b.setAttribute("aria-controls","doc");
+      b.setAttribute("aria-pressed",String(active===c.id));
       b.innerHTML=c.label+' <span class="n">'+c.n+'</span>';
       chipsEl.appendChild(b);
     });
   }
 
-  function apply(){
+  function apply(keepExpanded){
     clearMarks();
-    var ts=terms();
+    var groups=termGroups();
+    if(!keepExpanded) blocks.forEach(function(b){b.tables.forEach(function(t){t.expanded=false})});
     clr.hidden=!q.value;
-    var counts={}, total=0, shown=0;
+    var counts={}, total=0, shown=0, rowHits=0;
+    var allAlts=[].concat.apply([],groups);
     blocks.forEach(function(b){
-      var m=matches(b,ts);
-      if(m){counts[b.cat]=(counts[b.cat]||0)+1; total++;}
+      var m=hasAll(b.text,groups);
+      if(m){counts[b.cat]=(counts[b.cat]||0)+1; total++}
       var vis=m&&(active==="all"||active===b.cat);
       b.el.classList.toggle("off",!vis);
-      if(vis){shown++; if(ts.length) highlight(b.el,ts);}
+      if(vis){ shown++; rowHits+=filterTables(b,groups); if(groups.length) highlight(b.el,allAlts.slice()) }
+      else filterTables(b,[]);
     });
-    sections.forEach(function(s){
-      var any=s.querySelector(".blk:not(.off)");
-      s.classList.toggle("off",!any);
-    });
+    sections.forEach(function(s){ s.classList.toggle("off",!s.querySelector(".blk:not(.off)")) });
     buildChips(counts,total);
     empty.hidden=shown!==0;
-    if(shown===0){$("emptyQ").textContent=ts.length?'No matches for "'+q.value.trim()+'"':"Nothing to show";}
-    var catName=active==="all"?"":" in "+(cats.filter(function(c){return c.id===active})[0]||{}).label;
-    statusEl.textContent=ts.length
-      ? shown+(shown===1?" result":" results")+" match"+(shown===1?"es":"")+' "'+q.value.trim()+'"'+catName
-      : (active==="all"?"Showing the full packet":"Showing "+(cats.filter(function(c){return c.id===active})[0]||{}).label);
+    var catLabel=(cats.filter(function(c){return c.id===active})[0]||{}).label, raw=q.value.trim();
+    if(shown===0) $("emptyQ").textContent=groups.length?'No matches for "'+raw+'"':"Nothing to show";
+    statusEl.textContent=groups.length
+      ? shown+(shown===1?" section":" sections")+(rowHits?", "+rowHits+" table "+(rowHits===1?"row":"rows"):"")+' match "'+raw+'"'+(active==="all"?"":" in "+catLabel)
+      : (active==="all"?"Showing the full packet":"Showing "+catLabel);
   }
 
   var timer;
-  q.addEventListener("input",function(){clearTimeout(timer);timer=setTimeout(apply,120)});
+  q.addEventListener("input",function(){clearTimeout(timer);timer=setTimeout(function(){apply()},120)});
   clr.addEventListener("click",function(){q.value="";apply();q.focus()});
   chipsEl.addEventListener("click",function(e){
     var b=e.target.closest(".chip"); if(!b) return;
@@ -1138,8 +1157,8 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
   });
   $("emptyClear").addEventListener("click",function(){q.value="";active="all";apply()});
   document.addEventListener("keydown",function(e){
-    if(e.key==="/"&&document.activeElement!==q&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();q.focus();}
-    if(e.key==="Escape"&&document.activeElement===q&&q.value){q.value="";apply();}
+    if(e.key==="/"&&document.activeElement!==q&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();q.focus()}
+    if(e.key==="Escape"&&document.activeElement===q&&q.value){q.value="";apply()}
   });
 
   /* print button appears only when the page is opened on its own, since embedded viewers block printing */
@@ -1149,5 +1168,3 @@ mark{background:var(--mark);color:var(--mark-fg);border-radius:2px;padding:0 1px
   apply();
 })();
 </script>
-</body>
-</html>
